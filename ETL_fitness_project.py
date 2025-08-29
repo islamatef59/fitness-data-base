@@ -24,6 +24,6 @@ dic_resample_rules={
    'calories_per_step':'mean',
 }
 df_fitness_resampled=df_fitness.resample('D').agg(dic_resample_rules)
-df_fitness_final=df_fitness_resampled.ffill()
+df_fitness_final=df_fitness_resampled.interpolate(method='linear')
 df_fitness_final.to_csv('cleaned_fitness_data2.csv',index=False)
 print(f" the file {'cleaned_fitness_data2.csv'} is laodded sucessfuly")
