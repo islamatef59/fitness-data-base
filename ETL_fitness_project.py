@@ -54,7 +54,13 @@ df_fitness_final['month'] = df_fitness_final.index.month
 #know the  quarter of  the day
 df_fitness_final['quarter'] = df_fitness_final.index.quarter
 
-#load new cleaned data to the file
+#convert categorical columns  workout_type and mood into numerical formats.
+categorical_columns =['workout_type','mood']
+df_encode=pd.get_dummies(df_fitness,columns=categorical_columns ,drop_first=False)
+df_encode.to_csv('cleaned_fitness_data3.csv',  index=False)
+print(f" the file {'cleaned_fitness_data3.csv'} is laodded sucessfuly")
+
+
 df_fitness_final.to_csv('cleaned_fitness_data2.csv',index=False)
 print(f" the file {'cleaned_fitness_data2.csv'} is laodded sucessfuly")
 
